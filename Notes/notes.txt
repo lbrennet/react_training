@@ -1,1 +1,10 @@
 https://caniuse.com/ pour savoir si on peut utiliser un elt js en fonction du nav
+
+JSX:
+/*
+	{ } -> rentre dans du javascript
+	{ {toto: "titi"}} -> objet dans du JS
+	{ /* */ } -> Commentaire dans du JS
+*/
+
+
