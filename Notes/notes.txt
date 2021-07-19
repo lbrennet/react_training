@@ -1,0 +1,1 @@
+https://caniuse.com/ pour savoir si on peut utiliser un elt js en fonction du nav
