@@ -1,0 +1,16 @@
+.formulaire form label{
+  display: inline-block;
+  width : 5em;
+}
+.formulaire form input:focus {
+  background: ivory;
+}
+
+.formulaire form input {
+  width: 12em;
+}
+.formulaire input[type=submit] {
+  background-color: orange;
+  padding: .4em;
+  color: black;
+}

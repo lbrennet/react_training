@@ -1,0 +1,10 @@
+.toto{
+	color : purple;
+}
+#titi{
+	background-color : ivory;
+}
+
+li.item:nth-child(2n){
+	color : crimson;
+}

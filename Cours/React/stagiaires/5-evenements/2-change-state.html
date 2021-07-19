@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		 
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 04</span> State </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> State</h3>
+				Pour modifier l'état d'un composant il faut passer par l'objet state<br />
+				 <article id="job"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+    <script type="text/babel">
+
+    //<![CDATA[
+	// 	let MNMLogo = 'http://chapoulougne.com/img/sbconsult.jpg';
+	// 	class SimpleExample extends React.Component {
+	// 		constructor() {
+	// 			super();
+	// 			this.state = {works: false};
+	// 			this.changeTitle = this.changeTitle.bind(this);
+	// 		}
+	// 		changeTitle() {
+	// 			this.setState({works: !this.state.works});
+	// 		}
+	// 		render() {
+	// 			let title = this.state.works ? 'Chapoulogne non réalisations' : 'Chapoulogne réalisations'; // Ternary operator
+	// 			let link;
+	// 			if (this.state.works) {	link = <MWLink />;
+	// 			} else {
+	// 				link = <MNMLink />;
+	// 			}
+	// 			return (
+	// 				<div>
+	// 					<Header><Logo /></Header>
+	// 					<Main title={title}>
+	// 						{link}
+	// 						<div>
+	// 							<button type="button" className="btn btn-primary"
+	// 								onClick={this.changeTitle}>Changez de site</button>
+	// 						</div>
+	// 					</Main>
+	// 					<Footer><ContactUs /></Footer>
+	// 	         </div>
+	// 			);
+	// 		}
+	// 	}
+	// 	class MNMLink extends React.Component {
+	// 		render() {
+	// 			return (
+	// 				<div >
+	// 					<a href="http://www.chapoulougne.com">http://www.chapoulougne.com</a>
+	// 				</div>
+	// 			);
+	// 		}
+	// 	}
+	// 	class MWLink extends React.Component {
+	// 		render() {
+	// 			return (
+	// 				<div className="form-group">
+	// 					<a href="http://www.perdu.com">http://www.perdu.com</a>
+	// 				</div>
+	// 			);
+	// 		}
+	// 	}
+	// 	class Header extends React.Component {
+	// 		render() {
+	// 			return (
+	// 				<header role="banner">
+	// 					{this.props.children}
+	// 	         </header>
+	// 			);
+	// 		}
+	// 	}
+	// 	class Main extends React.Component {
+	// 		render() {
+	// 			return (
+	// 				<main role="main">
+	// 					<h1>{this.props.title}</h1>
+	// 					{this.props.children}
+	// 	         </main>
+	// 			);
+	// 		}
+	// 	}
+	// 	class Footer extends React.Component {
+	// 		render() {
+	// 			return (
+	// 				<footer role="contentinfo">
+	// 					{this.props.children}
+	// 	         </footer>
+	// 			);
+	// 		}
+	// 	}
+	// 	class Logo extends React.Component {
+	// 		render() {
+	// 			return (
+	// 				<img src={MNMLogo} />
+	// 			);
+	// 		}
+	// 	}
+	// 	class ContactUs extends React.Component {
+	// 		render() {
+	// 			return (
+	// 				<p> Arche de la défense &bull; <a href="mailto:s.brunet@leserveur.com">s.brunet</a></p>
+	// 			);
+	// 		}
+	// 	}
+	// ReactDOM.render(<SimpleExample />, document.querySelector('#job'));
+	//avec hooks
+	const MNMLogo = "http://chapoulougne.com/img/sbconsult.jpg";
+	// à vous
+	// à vous
+	// à vous
+		const title = works ? "It works!" : "Wait no it doesn't";
+		const link = works ? "http://chapoulougne.com" : "http://www.perdu.com";
+		return (
+			<div>
+				<Header>
+					<Logo url={MNMLogo} />
+				</Header>
+				<Main title={title}>
+					<Link url={link} />
+					<div className="form-group">
+						<button
+							type="button"
+							className="btn btn-primary"
+							onClick={changeTitle}
+						>
+							CLICK ME!
+						</button>
+					</div>
+	</Main>
+	<ContactUs />
+			</div>
+		);
+	};
+
+	const Link = ({ url }) => {
+	// à vous
+	// à vous
+	// à vous
+	// à vous
+	};
+
+	const Header = props => {
+	// à vous
+	};
+
+	const Main = props => {
+		return (
+		// à vous
+		// à vous
+		// à vous
+		// à vous
+		);
+	};
+	const Logo = props => {
+		return <img src={props.url} />;
+	};
+	const ContactUs = props => {
+	// à vous
+};
+ReactDOM.render(<SimpleExample />, document.querySelector("#job"));
+  //  ]]>
+    </script>
+	</body>
+</html>

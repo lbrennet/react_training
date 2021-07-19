@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+
+		<link rel="stylesheet"  href="style.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 04</span> State </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> State</h3>
+				Pour modifier l'état d'un composant il faut passer par l'objet state<br />
+				 <article id="job"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+    <script type="text/babel">
+
+  //<![CDATA[
+	class WeatherApp extends React.Component {
+		constructor(props) {
+			super(props);
+			this.state = {
+				city: undefined,
+				country: undefined,
+				temperature: undefined,
+				humidity: undefined,
+				wind: undefined,
+			};
+		};
+		static defaultProps = {
+			city: 'Paris',
+		};
+		getWeatherInfo = (city) => {
+			const main = this;
+			let query = null;
+			main.setState({
+					infoStatus: 'loading'
+			});
+			if (!city || city == '') {
+				query = this.props.city;
+			} else {
+				query = city;
+			}
+			fetch(`http://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=50a34e070dd5c09a99554b57ab7ea7e2`)
+			// à vous
+			// à vous
+			// à vous
+			.catch( function() {
+				main.setState({
+					infoStatus: 'error'
+				});
+			})
+		};
+		componentWillMount() {
+		// à vous
+		};
+		handleSubmit = (event) => {
+			event.preventDefault();
+			// à vous
+		};
+		render() {
+			const {
+				city,
+				country,
+				temperature,
+				humidity,
+				wind,
+				infoStatus
+			} = this.state;
+			let data = null;
+			if (infoStatus == 'loaded') {
+				data = <div className="weatherInfo">
+						<div className="cityName">
+							<div>{city} <span>({country})</span></div>
+						</div>
+						<div className="tempInfo">
+							<div>Temperature <span>{temperature} C</span></div>
+							<div>Humidité <span>{humidity}%</span></div>
+							<div>Vent <span>{wind}m/s</span></div>
+						</div>
+					</div>
+			} else if (infoStatus == 'loading') {
+				data = <div className="info loading">Loading weather data...</div>
+			} else if (infoStatus == 'error') {
+				data = <div className="info error">Error while loading weather data. Try again later.</div>
+			}
+			return (
+				<div className="weatherApp">
+					<div className="weatherQuery">
+						<form onSubmit={this.handleSubmit}>
+							<input
+								type="text"
+								name="search"
+								placeholder="Search a City..."
+							/>
+						</form>
+					</div>
+					{data}
+				</div>
+			);
+		};
+	}
+
+	ReactDOM.render(<WeatherApp />, document.querySelector('#job'));
+  //  ]]>
+    </script>
+	</body>
+</html>

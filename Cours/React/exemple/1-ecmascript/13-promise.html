@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<style rel="stylesheet">
+
+		</style>
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3>Promise</h3>
+					L'expression await interrompt l'exécution d'une fonction asynchrone et<br />
+					attend la résolution d'une promesse.<br />
+					Lorsque la promesse est résolue (tenue ou rompue),<br />
+					la valeur est renvoyée et l'exécution de la fonction asynchrone<br />
+					On aura une fonction qui renvoie une promesse et on attachera les callbacks sur cette promesse
+
+					<span id="type-text">...</span>
+					<span class="blinking-cursor">_</span>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+			//<![CDATA
+			function successCallback(toto){
+				console.info("C'est bien fait " + toto)}
+			function failureCallback(toto){
+				console.info("C'est mal fait " + toto)}
+
+			function faireQqc() {
+			  return new Promise((successCallback, failureCallback) => {
+			    console.log("C'est fait");
+			    // réussir une fois sur deux
+			    if (Math.random() > .5) {
+			      successCallback("Réussite");
+			    } else {
+			      failureCallback("Échec");
+			    }
+			  })
+			}
+			faireQqc().then(successCallback, failureCallback);
+
+
+
+			function slowAdditionBroken(n1, n2) {
+	  return new Promise((resolve, reject) => {
+	    setTimeout(() => reject(new Error('impossible d\'additionner')), 3000);
+	  });
+	}
+
+		async function increaseSalaryBroken(base, increase) {
+	  let newSalary;
+	  try {
+	    newSalary = await slowAdditionBroken(base, increase);
+	  } catch (e) {
+	    console.log(`Error: ${e.message}`);
+	    newSalary = base * 2;
+	  }
+	  console.log(`Nouveau salaire : ${newSalary}`);
+	  return newSalary;
+		}
+
+	increaseSalaryBroken(1000, 200);
+
+	async function msg() {
+  const [a, b, c] = await Promise.all(['who()', 'what()', 'where()']);
+
+		  console.log(`${ a } ${ b } ${ c }`);
+		}
+
+		msg()
+//all
+		fetch('http://swapi.dev/api/people/2/')
+  .then(characterResponse => characterResponse.json())
+  .then(characterResponseJson => {
+    Promise.all(
+      characterResponseJson.films.map(filmUrl =>
+        fetch(filmUrl).then(filmResponse => filmResponse.json())
+      )
+    ).then(films => {
+      console.log(films)
+    })
+  })
+
+
+
+
+			// ]]>
+		</script>
+	</body>
+</html>

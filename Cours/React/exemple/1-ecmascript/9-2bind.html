@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3>This et bind</h3>
+				les fonctions fléchées(=>) partagent le même this lexical que leur scope parent<br />
+				Les fonctions fléchées ne créent pas de nouveau contexte, elles utilisent la valeur this de leur contexte. <br />
+				Aussi, si le mot-clé this est utilisé dans le corps de la fonction, <br />
+				le moteur recherchera la référence à cette valeur dans une portée parente.
+			</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+			//<![CDATA
+			// var oliver = {
+			//   name: "Oliver Queen",
+			//   friends : ["Black Canary", "Flash", "Green Lantern"],
+			//   helloBuddies: function() {
+			//     this.friends.forEach(function(buddy) {
+			//       console.log(buddy + " is a friend of " + this.name);
+			//     }.bind(this));
+			//   }
+			// }
+			// oliver.helloBuddies();
+
+			// var oliver = {
+			//   name: "Oliver Queen",
+			//   friends : ["Black Canary", "Flash", "Green Lantern"],
+			//   helloBuddies () {
+			//     this.friends.forEach((buddy) => {
+			//       console.log(buddy + " is a friend of " + this.name);
+			//     });
+			//   }
+			// }
+			//
+			// oliver.helloBuddies();
+			var arguments = [1, 2, 3];
+			var arr = () => arguments[0];
+			console.info(arr()); // 1
+
+			function toto () {
+				let arguments = [1, 2, 3];
+			  var f = (i) => arguments[0] + i;
+				console.info(arguments[0] + 2)
+			  // lien implicite avec arguments de toto
+			  return f(2);
+			}
+			console.info(toto(3)); // 5
+
+			// const printNumbers = {
+			//   phrase: 'Valeur :',
+			//   numbers: [1, 2, 3, 4],
+			//
+			//   loop() {
+			//     this.numbers.forEach(function (number) {
+			//       console.log(this.phrase, number)
+			//     })
+			//   },
+			// }
+
+			const printNumbers = {
+		  phrase: 'Valeur : ',
+		  numbers: [1, 2, 3, 4],
+
+			loop() {
+			 this.numbers.forEach((number) => {
+				 console.log(this.phrase, number)
+			 })
+		 },
+		}
+
+		printNumbers.loop()
+			// ]]>
+		</script>
+	</body>
+</html>

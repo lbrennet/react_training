@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+
+		<link rel="stylesheet"  href="style.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 04</span> State </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Hooks</h3>
+				Les Hooks sont une nouveauté de React 16.8. <br />
+				useEffect. Celui-ci prend deux paramètres :<br />
+
+		 		Une fonction dont le rôle est d’appliquer les effets attendus ;<br />
+				 Cette fonction peut retourner une autre fonction dont le rôle sera de nettoyer <br />
+				 (typiquement le disconnect après le connect) ;
+		 	 	Un tableau des dépendances (qui fonctionne exactement sur le même modèle que useCallback et useMemo) <br />
+				pour n’exécuter l’effet que si une des dépendances a changé de valeur ;
+				 <article id="job"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+    <script type="text/babel">
+
+    //<![CDATA[
+		function Pokemon({pokemonToGet}) {
+    	//à vous
+        //https://pokeapi.co/api/v2/pokemon/${pokemonToGet}/`)
+
+    }, [pokemonToGet]) // get a new pokemon with the pokemonToGet prop changes
+    const style = {textTransform: 'capitalize'}
+    return (
+        <div>
+        { pokemon
+            ? <>
+                <img src={pokemon.sprites.front_default}
+                    alt={'Image of ' + pokemon.name}/>
+                <p style={style}>Name: {pokemon.name}</p>
+                <p style={style}>
+                    Type: {pokemon.types.map(x => x.type.name).join(', ')}
+                </p>
+            </>
+            : 'Loading...'
+        }
+        </div>
+    )
+	}
+	function PokemonForm() {
+    //à vous
+		//à vous
+		//à vous
+    }
+    return (
+        <div>
+            <input onChange={(e) => setInputValue(e.target.value)}
+                value={inputValue} type="text"/>
+            <button onClick={getPokemon}>
+                Get Pokemon
+            </button>
+            <Pokemon pokemonToGet={pokemonToGet} />
+        </div>
+    )
+}
+				ReactDOM.render(<PokemonForm/>, document.querySelector("#job"))
+
+  //  ]]>
+    </script>
+	</body>
+</html>

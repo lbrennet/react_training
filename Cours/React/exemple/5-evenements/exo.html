@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<link rel="stylesheet"  href="style.css" />
+
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 05</span> Evenement</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Evenement</h3>
+				Formulaire <br />
+				Exercice<br />
+				Un formulaire avec un champs input(text),<br />
+				input(number) obligatoire,<br />
+				input(email) obligatoire,<br />
+				un input(submit)  <br />
+				montrer ce qui a été envoyé
+
+					<article class="formulaire"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script src="../00-modele/js/react.development.js"></script>
+    <script src="../00-modele/js/react-dom.development.js"></script>
+    <script src="../00-modele/js/babel.js"></script>
+    <script type="text/babel">
+		//<![CDATA[
+		//Composant principal de l'application de formulaire React
+		// class App extends React.Component {
+		//
+		//     //Constructeur du composant App, qui définit l'état
+		//     constructor(props) {
+		//         super(props);
+		//         this.state = {
+		//             firstName: '',
+		//             lastName: '',
+		//             zipcode: '',
+		//             email: '',
+		//             userData: {
+		//                 firstName: '',
+		//                 lastName: '',
+		//                 zipcodeNumber: '',
+		//                 email: ''
+		//             },
+		//             showFormInput: false
+		//         };
+		//     }
+		//
+		//     //Définit la valeur d'état firstName sur la valeur du champ first_name lorsque l'événement onChange est déclenché
+		//     handleFirstNameChange(event) {
+		//         var firstName = event.target.value;
+		//         this.setState({
+		//             firstName: firstName
+		//         });
+		//     }
+		//     //Définit la valeur d'état LastName sur la valeur du champ last_name lorsque l'événement onChange est déclenché
+		//     handleLastNameChange(event) {
+		//         var lastName = event.target.value;
+		//         this.setState({
+		//             lastName: lastName
+		//         });
+		//     }
+		//
+		//     //Définit la valeur d'état code postal sur la valeur du champ tel lorsque l'événement onChange est déclenché
+		//     handlePhoneNumberChange(event) {
+		//         var zipcode = event.target.value;
+		//         this.setState({
+		//             zipcode: zipcode
+		//         });
+		//     }
+		//     //Définit la valeur d'état email sur la valeur du champ email lorsque l'événement onChange est déclenché
+		//     handleEmailChange(event) {
+		//         var email = event.target.value;
+		//         this.setState({
+		//             email: email
+		//         });
+		//     }
+
+		    /*
+		    * Gestionnaire d'événements pour l'événement onSubmit du formulaire
+		    * Stocke les données d'entrée de formulaire dans l'objet userData, qui est enregistré dans l'état de ce composant
+		    */
+// 		    handleFormSubmit(event) {
+// 		        this.hideFormInput();
+// 		        this.setState({
+// 		            userData: {
+// 		                firstName: (this.inputIsEmpty(this.state.firstName) ? '' : this.state.firstName),
+// 		                lastName: (this.inputIsEmpty(this.state.lastName) ? '' : this.state.lastName),
+// 		                zipcodeNumber: (this.inputIsEmpty(this.state.zipcode) ? '' : this.state.zipcode),
+// 		                email: (this.inputIsEmpty(this.state.email) ? '' : this.state.email),
+// 		            }
+// 		        })
+// 		        event.preventDefault();
+// 		    }
+// 		    //Vérifie si la chaîne donnée est vide
+// 		    inputIsEmpty(input) {
+// 		        return input === '';
+// 		    }
+// 		    //affichage qui montre les données qui ont été enregistrées à partir du formulaire
+// 		    displayFormInput() {
+// 		        this.setState({
+// 		            showFormInput: true
+// 		        });
+// 		    }
+// 		    //masque les données qui ont été enregistrées à partir du formulaire
+// 		    hideFormInput() {
+// 		        this.setState({
+// 		            showFormInput: false
+// 		        });
+// 		    }
+// 		    //Renders the form
+// 		    render() {
+// 		        var displayForm = '';
+// 		        if (this.state.showFormInput) {
+// 		            var displayFormData = <UserInfoDisplay userData={this.state.userData}/>;
+// 		        }
+// 		        return (
+//                 <div>
+//                     <h2>React Form Exo</h2>
+//                     <form onSubmit={this.handleFormSubmit.bind(this)}>
+// 										<p>
+//                       <input  type="text" name="first_name" value={this.state.firstName} reqired
+// 												onChange={this.handleFirstNameChange.bind(this)} placeholder="First Name"/>
+// 										</p>
+// 										<p>
+//                       <input type="text" name="last_name" value={this.state.lastName} required
+// 												onChange={this.handleLastNameChange.bind(this)} placeholder="Last Name"/>
+// 										</p>
+// 										<p>
+//                       <input type="number" name="zipcode_number" value={this.state.zipcode} required
+// 												onChange={this.handlePhoneNumberChange.bind(this)} placeholder="Post Code"/>
+// 										</p>
+// 										<p>
+//                       <input type="email" name="email" value={this.state.email} required
+// 												onChange={this.handleEmailChange.bind(this)} placeholder="Email"/>
+// 										</p>
+//                         <input type="submit" value="Submit"/>
+//                     </form>
+//                     <div>
+//                         <button onClick={this.displayFormInput.bind(this)}>Show saved input</button>
+//                     </div>
+//                     {displayFormData}
+//                 </div>
+// 		        );
+// 		    }
+// 		}
+//
+// 		//Composant sans état qui affiche les données de formulaire soumises
+// 		function UserInfoDisplay(props) {
+// 		    return(
+// 		        <div className="user-info-display">
+// 		            <p><span>{props.userData.lastName}</span>, <span>{props.userData.firstName}</span></p>
+// 		            <p><span>{props.userData.zipcodeNumber}</span> | <span>{props.userData.email}</span></p>
+// 		        </div>
+// 		    );
+// 		}
+// ReactDOM.render(<App/>, document.querySelector(".formulaire"));
+//
+// function Result(props) {
+// return <h1>Avec fonction : <br/> {props.number} {props.text} </h1>
+//
+//   ;
+// }
+function Result(props) {
+	  return <h3>Avec fonction : <br />
+		{props.number} {props.text}  {props.email}</h3>
+			;
+		}
+		const NameForm = () => {
+			const [valueText,   setValueText] = React.useState("");
+			const [valueNumber, setValueNumber] = React.useState("");
+			const [valueEmail,  setValueEmail] = React.useState("");
+			const [showHide,  setShowHide] = React.useState(false);
+			const handleChange = event => {
+				if(event.target.id === 'idText'){
+						setValueText(event.target.value);
+				}
+				if(event.target.id === 'idNumber'){
+						setValueNumber(event.target.value);
+				}
+				if(event.target.id === 'idEmail'){
+						setValueEmail(event.target.value);
+				}
+
+			};
+			const handleSubmit = event => {
+				//debugger;
+				setShowHide(!showHide);
+				//alert("Value : " +  " number " + valueNumber + " email " + valueEmail);
+				event.preventDefault();
+			};
+			return (
+				<form onSubmit={handleSubmit}>
+					<label>
+						Name :
+						<input id="idText" type="text" value={valueText} onChange={handleChange} />
+					</label><br />
+					<label>
+						Number :
+						<input id="idNumber" type="number" value={valueNumber} onChange={handleChange} />
+					</label><br />
+					<label>
+						Email :
+						<input id="idEmail"  type="email" value={valueEmail} onChange={handleChange} />
+					</label><br />
+
+
+					<input type="submit" value="Submit" />
+
+					<hr/>
+ 					{showHide ?
+						  `Texte : ${valueText} Nombre :  ${valueNumber}
+						 Email :  ${valueEmail}`
+						:``}
+
+					{showHide ?
+						<Result text={valueText} number={valueNumber} email={valueEmail}/>
+						:``}
+
+				</form>
+
+			);
+		};
+		ReactDOM.render(<NameForm />, document.querySelector(".formulaire"));
+    //  ]]>
+    </script>
+	</body>
+</html>

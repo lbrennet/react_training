@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+
+		<link rel="stylesheet"  href="style.css" />
+		<script>document.documentElement.className="js";
+		var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};
+		supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 04</span> State </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Hooks</h3>
+				Les Hooks sont une nouveauté de React 16.8. <br />
+				Ils permettent de bénéficier d’un état local et d’autres fonctionnalités de React sans avoir à écrire de classes<br />
+				useMemo recalculera la valeur mémoïsée seulement si une des entrées a changé. <br />
+				Cette optimisation permet d’éviter des calculs coûteux à chaque rendu.<br />
+				La fonction fournie à useMemo s’exécute pendant le rendu. <br />
+				 <article id="job"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+    <script type="text/babel">
+
+    //<![CDATA[
+		// le hook useMemo
+		//https://medium.com/javascript-in-plain-english/react-usememo-and-when-you-should-use-it-e69a106bbb02
+		function App() {
+				const [length, set_length] = React.useState(3);
+				const [name, set_name] = React.useState('John Doe');
+
+				const on_name_changed = React.useCallback((e) => set_name(e.target.value), []);
+				const on_length_changed = React.useCallback((e) => set_length(Number(e.target.value)), []);
+
+				return (
+					<>
+						<input value={name} onChange={on_name_changed} />
+						<NameDisplay name={name}/>
+						<hr />
+						<input value={length} onChange={on_length_changed} />
+						<FibDisplay length={length} />
+					</>
+				);
+				}
+
+				function FibDisplay({length}) {
+				const numbers = React.useMemo(() => {
+					console.log('Calculating numbers...');
+					const result = [1, 1];
+					for (let i = 2; i < length; i++) {
+						result[i] = result[i - 1] + result[i - 2];
+					}
+					return result;
+				}, [length]);
+
+				return <p>{length} numbers of the fibonacci sequence: {numbers.join(', ')}</p>;
+				}
+
+				const NameDisplay = React.memo(function ({name}) {
+				console.log('Rerendering name...');
+				return <p>Your name is {name}</p>;
+				});
+
+				ReactDOM.render(<App/>, document.querySelector("#job"))
+
+  //  ]]>
+    </script>
+	</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<link rel="stylesheet"  href="style.css" />
+		<style rel="stylesheet">
+			ul li.listeexo{list-style-type: none; }
+			li.listeexo{color:Plum; }
+		</style>
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 03</span> JSX </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> JSX</h3>
+				Créer des éléments <br />
+				un bloc H1<br />
+				un bloc H3 affichage  conditionnel (connecté ou non)<br />
+				<!-- un bloc input -->
+				le resultat d'un calcul<br />
+				une liste ul li depuis un tableau de data<br />
+				un composant avec une props transmise
+
+					<article class="app"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script src="../00-modele/js/react.development.js"></script>
+		<script src="../00-modele/js/react-dom.development.js"></script>
+		<script src="../00-modele/js/babel.js"></script>
+		<script type="text/babel">
+		//<![CDATA[
+		// const names = ['Luke', 'Anakin', 'Han', 'Leïa'];
+		// const habillage = 'listeexo';
+
+		// const displaySurnom = (
+		//   <ul id="list1">
+		//     {names.map((name, index )=> <li id={index} className={habillage}>{name}</li>)}
+		//   </ul>
+		// );
+		// ReactDOM.render( displaySurnom, document.querySelector(".trad"));
+		//
+		// const header = React.createElement("h1", null, "Hello, world!");
+		//
+		// const list =
+		// React.createElement("ul", null,
+		// 	React.createElement("li", null, "Film IV"),
+		// 	React.createElement("li", null, "Film V"),
+		// 	React.createElement("li", null, "Film VI"),
+		// 	React.createElement("li", null, "Film I"),
+		// 	React.createElement("li", null, "Film II"),
+		// 	React.createElement("li", null, "Film VII"),
+		// 	React.createElement("li", null, "Film VIII"),
+		// 	React.createElement("li", null, "Film IX"));
+		//
+		// const input =
+		// // Champs input
+		// React.createElement("div", null,
+		// 	React.createElement("span", null, "Label "),
+		// 		React.createElement("input", { type: "password" }));
+		//
+		// // composant
+		// const Component = props => React.createElement("h3", null, props.name);
+		//
+		// // Affichage conditionnel
+		// const LoginComponent = (props) =>
+		// props.isLoggedIn ?
+		// React.createElement("h3", null, "Connecté") :
+		// React.createElement("h3", null, "non connecté !");
+		//
+		//
+		// // Fonctions  JavaScript
+		// const multiply = (a, b) => a * b;
+		// const MultiplyComponent = ({ a, b }) =>
+		// React.createElement("div", null, a, " multiplie ", b, " est ", multiply(a, b));
+		//
+		//
+		// const AllTogetherNow = () =>
+		// React.createElement("div", null,
+		// header,
+		// list,
+		// input,
+		// React.createElement(Component, { name: "James" }),
+		// React.createElement(LoginComponent, { isLoggedIn: false }),
+		// React.createElement(MultiplyComponent, { a: 2, b: 2 }));
+		//
+		// ReactDOM.render(
+		// React.createElement(AllTogetherNow, null), document.querySelector(".app"));
+
+// 		var names = ['Luke', 'Anakin', 'Han', 'Leïa'];
+// 		const habillage = 'listeexo';
+// 		class Input extends React.Component{
+// 			constructor(props){
+// 				super(props);
+// 			}
+// 			render(){
+// 				return(
+// 					<input/>
+// 				)
+// 			}
+// 		}
+// 		 const multiply = () => 2 * 3;
+// 		 const MultiplyComponent = ({ a, b }) =>
+// 		 React.createElement("div", null, a, " multiplie ", b, " est ", multiply(a, b));
+//
+// 		class LabelConditionnel extends React.Component{
+// 			constructor(props){
+// 				super(props);
+// 			}
+// 			render(){
+// 				return(<React.Fragment>
+// 					Condition vaut {this.props.item}: donc le texte est:&nbsp;
+// 					{
+// 						this.props.condition ? "C'est oui" : "C'est non!!"
+// 					}
+// 					<br />
+// 				</React.Fragment>
+// 				)
+// 			}
+// 		}
+//
+// 		class Element extends React.Component{
+// 			constructor(props){
+// 				super(props);
+// 			}
+// 			render(){
+// 				return(<li className={habillage} >{this.props.elem}</li>)
+// 			}
+// 		}
+// 		class ListeElements extends React.Component{
+// 			constructor(props){
+// 				super(props);
+// 			}
+// 			render(){
+// 				return(
+// 					<ul>
+// 					{this.props.elems.map((elem,index)=>{
+// 								return <Element elem={elem} key={index}/>
+// 							})
+// 					}
+// 				</ul>
+// 		);
+// 			}
+// 		}
+//
+// var HomePage= function(){
+// 	return (
+// 		<React.Fragment>
+// 		<Input />
+// 		<MultiplyComponent />
+// 		<ListeElements elems={names}/>
+// 		<LabelConditionnel condition={false} item="false" />
+// 		<LabelConditionnel condition={true} item="true" />
+// 		</React.Fragment>
+// 	);
+// }
+//
+// 	ReactDOM.render(<HomePage />,document.querySelector(".app"));
+	//
+	// var names = ['Luke', 'Anakin', 'Han', 'Leïa'];
+	// const habillage = 'listeexo';
+	//
+	// class ElementH1 extends React.Component {
+	// 	render() {
+	// 			return (
+	// 				<h1>
+	// 					Hello World!
+	// 				</h1>
+	// 			)
+	// 	}
+	// }
+	// class Calcul extends React.Component {
+	// 	render() {
+	// 			let disque = this.props.num * this.props.num * 3.14116
+	// 			let resultStr = `rayon ${this.props.num}, surface du disque = ${disque}`
+	// 			return (
+	// 				<p>
+	// 					{resultStr}
+	// 				</p>
+	// 			)
+	// 	}
+	// }
+	//
+	// class ElementCond extends React.Component {
+	// 	render() {
+	// 		if (this.props.isConnected) {
+	// 			return (
+	// 				<h3>Connected ! </h3>
+	// 			)
+	// 		} else {
+	// 			return (
+	// 				<h3>Not Connected ! </h3>
+	// 			)
+	// 		}
+	// 	}
+	// }
+	//
+	// class ElementList extends React.Component {
+	// 	constructor(props) {
+	// 		super(props)
+	// 	}
+	// 	render () {
+	// 		return (
+	// 			<ul> {
+	// 				this.props.elems.map((elem,index) => {
+	// 					return <li key = {index} className={this.props.style}>{elem}</li>
+	// 						})
+	// 					}
+	// 			</ul>
+	// 		)
+	// 	}
+	// }
+	//
+	// class AllInclude extends React.Component {
+	// 	constructor(props) {
+	// 		super(props)
+	// 	}
+	// 	render () {
+	// 		return (
+	// 			<>
+	// 				<ElementH1/>
+	// 				<ElementCond isConnected={this.props.isConnected}/>
+	// 				<ElementList elems = {this.props.elems} style = {this.props.style} />
+	// 				<Calcul num = {this.props.num} />
+	// 			</>
+	// 		)
+	// 	}
+	// }
+	// var names = ['Luke', 'Anakin', 'Han', 'Leïa'];
+	// const habillage = 'listeexo';
+	//
+	// const Titre = <h1>Hello world</h1>;
+	//
+	// function GetElems(props){
+	// 		return <ul>{
+	// 				props.liste.map((elem, index)=>{
+	// 						return index % 2 ? <li key={index} className={props.style}>{elem}</li> : <li key={index} className={toto}>{elem}</li>
+	//
+	// 				})
+	// 			}
+	// 		</ul>
+	// }
+	//
+	// let Calcul = (props) => {
+	// 	let disque = this.props.num * this.props.num * 3.14116
+	// 	let resultStr = `rayon ${this.props.num}, surface du disque = ${disque}`
+	// 			return (
+	// 				<p>
+ 	// 				{resultStr}
+	// 			</p>
+ 	// 		)
+	// }
+	// function ElementCond(props){
+	// 			if (this.props.isConnected) {
+	// 				return (
+	// 					<h3>Connected ! </h3>
+	// 				)
+	// 			} else {
+	// 				return (
+	// 					<h3>Not Connected ! </h3>
+	// 				)
+	// 			}
+	// 		}
+	//
+	//
+	// function AllInclude(props) {
+	// 			return (
+	// 					<>
+	// 						{Titre}
+	// 						<ElementCond isConnected={props.isConnected}/>
+	// 						<Calcul a={2} b={10} />
+	// 						<GetElems liste={names} style={props.style}/>
+	// 					</>
+	// 			);
+	// }
+
+	var names = ['Luke', 'Anakin', 'Han', 'Leïa'];
+	const habillage = 'listeexo';
+
+	function ElementH1() {
+				return (
+					<h1>
+						Hello World!
+					</h1>
+				)
+		}
+
+
+	function GetElems(props){
+			return <ul>{
+					props.liste.map((elem, index)=>{
+							return <li key={index} className={props.style}>{elem}</li>
+					})
+				}
+			</ul>
+	}
+
+		function ElementCond(props){
+					if (props.isConnected) {
+						return (
+							<h3>Connected ! </h3>
+						)
+					} else {
+						return (
+							<h3>Not Connected ! </h3>
+						)
+					}
+				}
+
+	let Calcul = (props) => {
+		let disque = Math.round(props.num * props.num * Math.PI)
+		let resultStr = `rayon ${props.num}, surface du disque = ${disque}`
+				return (
+					<p>
+					{console.info(props.num)}
+ 					{resultStr}
+				</p>
+ 			)
+		}
+
+
+	function AllInclude(props) {
+				return (
+						<>
+							<ElementH1 />
+							<ElementCond isConnected={props.isConnected}/>
+							<Calcul num={props.num}/>
+							<GetElems liste={props.liste} style={props.style}/>
+						</>
+				);
+	}
+
+	ReactDOM.render(<AllInclude isConnected={true} style={habillage}  num={2}  liste={names}/>,
+		document.querySelector(".app"));
+
+    //  ]]>
+		</script>
+	</body>
+</html>

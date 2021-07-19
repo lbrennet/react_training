@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Template String</h3>
+				Le Template String va nous permettre de déclarer des chaînes avec des variables à évaluer à l'intérieur. À la différence d'une chaîne de caractères classique, on utilise des back quotes (`) à la place des double quotes.
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+			//<![CDATA
+			let me = "James Bond"
+			let acredit = 7
+			//let mi6 = 'Je suis '+ me +'agent 00'+acredit
+			let mi6 = `Je suis ${me} agent 00${acredit} `
+			console.info(mi6)
+
+			//remplace
+			let salade = '🍏🍋🍊🍓🍏🍏'.replace('🍏', '🥭')
+			console.info(salade)
+			//plusieurs remplacements
+			let salade_mangues = '🍏🍋🍊🍓🍏🍏'.replace(/🍏/g, '🥭')
+			console.info(salade_mangues)
+			//joke
+			console.info(('b'+'a'+ + 'a' + 'a').toLowerCase() === 'banana')
+			//Manger des pommes
+			let likeApple = true;
+			const greeting = `j'aime ${likeApple ? '🍏' : '🍓'}.`;
+			console.info(greeting)
+			// ]]>
+		</script>
+	</body>
+</html>

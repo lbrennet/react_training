@@ -1,0 +1,23 @@
+{
+  "status": "online",
+  "notifications": [
+    {
+      "id": 0,
+      "titre": "titre de la notification Cor",
+      "description": "해당 파일을 게임 클라이언트 설치 폴더 로 가셔서 복사하신다음 스타크래프트 폴더에 붙여넣기 해주셔야 정상 작동됩니다. 불편을 드려 죄송합니다.",
+      "mission": "A traduire."
+    },
+    {
+      "id": 1,
+      "titre": "titre de la notification jpn",
+      "description": "田中さんは英語の学生です。毎日英語を習います。毎朝６時半に起きます。シャワーをあびます。そして朝ご飯を食べます。時半に家を出ます.",
+      "mission": "A traduire aussi."
+    },
+    {
+      "id": 2,
+      "titre": "titre de la notification arm",
+      "description": "Tanaka- ն անգլերենի ուսանող է: Սովորեք անգլերեն ամեն օր: Վեր կաց ամեն առավոտ 6: 30-ին: Ես ցնցուղ ունեմ: Եվ նախաճաշեք: Տանից դուրս եկեք կիսով չափ.",
+      "mission": "A traduire aussi facile."
+    }
+  ]
+}

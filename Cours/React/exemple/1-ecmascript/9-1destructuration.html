@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3>Destructuration</h3>
+				Ces expressions utilisant des littéraux pour les objets ou les tableaux permettent de créer simplement
+				des données regroupées.<br /> Une fois créées,
+				on peut les utiliser de n'importe quelle façon, y compris comme valeur renvoyée par une fonction
+			</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+		[a, b] = [10, 20];
+			console.info(a);
+			// expected output: 10
+			console.info(b);
+			// expected output: 20
+			[a, b, ...reste] = [10, 20, 30, 40, 50];
+			console.info(reste);
+			// expected output: [30,40,50]
+			function destruc() {
+						  return [1, 2, 3];
+						}
+			var [a, , b] = destruc();
+			console.info("A vaut " + a + " B vaut " + b);
+
+			let Hero=['Luke','Jabba', 'Han']
+			const [chevalier, , Vaurien] = Hero
+			console.info(Vaurien);
+
+
+		// 	const {
+		// 		  author,
+		// 		  author: { James, Bond },
+		// 		} = note
+		//
+		// console.info(author)
+		</script>
+	</body>
+</html>

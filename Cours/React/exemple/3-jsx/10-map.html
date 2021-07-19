@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<link rel='stylesheet'  href='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.css'>
+		<link rel="stylesheet"  href="style.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 03</span> JSX </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> JSX</h3>
+				Afficher une carte a l'aide de librairies supplémentaires<br />
+					<article class="trad"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script src="../00-modele/js/react.development.js"></script>
+		<script src="../00-modele/js/react-dom.development.js"></script>
+		<script src="../00-modele/js/babel.js"></script>
+		<script src='https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.5.1/leaflet.js'></script>
+		<script src='https://unpkg.com/react-leaflet@2.3.0/dist/react-leaflet.js'></script>
+		<script type="text/babel">
+		//<![CDATA[
+		const { Map: LeafletMap, TileLayer, Marker, Popup } = ReactLeaflet
+		class MapExample extends React.Component {
+				constructor() {
+					super()
+					this.state = {
+						lat: 50.846,
+						lng: 4.3472,
+						zoom: 13
+					}
+				}
+					render() {
+						const position = [this.state.lat, this.state.lng];
+						return (
+							<LeafletMap center={position} zoom={this.state.zoom}>
+								<TileLayer
+									attribution='Nuetnigenough'
+									url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'
+								/>
+								<Marker position={position}>
+									<Popup>
+										Nuetnigenough.be <br /> Chasseur de Geuze.
+									</Popup>
+								</Marker>
+							</LeafletMap>
+						);
+					}
+				}
+				ReactDOM.render(<MapExample />,
+		        document.querySelector(".trad")
+		      );
+  //  ]]>
+		</script>
+	</body>
+</html>

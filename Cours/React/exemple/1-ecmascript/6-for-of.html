@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3>Les boucles</h3>
+				Il n'existe toujours pas de mot clé foreach en
+				JavaScript 2015, cependant il y a désormais une
+				nouvelle façon d'itérer sur un tableau en utilisant le couple for-of.
+
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+			//<![CDATA
+			let devsweb = [ ".net", "java", "ruby", "php" ];
+
+			devsweb.forEach(function (dev, index) {
+				//devsweb.forEach( (dev, index)=> {
+				console.info(index)
+				console.info(dev)
+			});
+
+			let languages = [ "C", "C++", "C#", "JavaScript" ];
+			for (let [index, language] of languages.entries()) {
+			  console.info(`Index : ${index} => Valeur : ${language}`);
+			  }
+
+			const daltons = [{
+			    name: 'Joe', age: 31
+			  },
+			  {
+			    name: 'Jack', age: 30
+			  },
+				{
+			    name: 'William', age: 29
+			  },
+			  {
+			    name: 'Avrell', age: 28
+			  },
+			]
+			const joe = daltons.find(p => p.name === 'Joe')
+				console.info(joe);
+				     //Suppression des doublons: les objets Set ne stockent que des valeurs uniques.
+						 //Si vous souhaitez éviter de stocker des doublons,
+						 //c'est un avantage significatif par rapport aux tableaux,
+			const duplicateCollection = ['Jack', 'Avrell','Avrell', 'Jo', 'Ma', 'Ma', 'William', 'William'];
+			// If you want to turn the array into a Set
+			let uniqueCollection = new Set(duplicateCollection);
+			console.info(uniqueCollection)
+			// If you want to keep your values in an array
+			let uniqueCollection2 = [...new Set(duplicateCollection)];
+			console.log(uniqueCollection2) // Result: ["A", "B", "C", "D"]
+
+			const pets = [
+				  { name: 'cat',   nLegs: 4 },
+				  { name: 'snake', nLegs: 0 },
+				  { name: 'dog',   nLegs: 4 },
+				  { name: 'bird',  nLegs: 2 }
+				];
+				let areAllFourLegs = pets.every(p => p.nLegs === 4);
+				console.info(areAllFourLegs)
+
+				const breeds = {
+				  'dog': ['Husky', 'Poodle', 'Shiba'],
+				  'cat': ['Korat', 'Donskoy'],
+				  'bird': ['Parakeets', 'Canaries']
+				};
+				const getBreeds = pet => {
+				  return breeds[pet] || [];
+				};
+				let catBreeds = getBreeds('cat');
+				console.info(catBreeds)
+			// ]]>
+		</script>
+	</body>
+</html>

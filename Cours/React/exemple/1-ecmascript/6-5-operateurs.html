@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3>ES2020</h3>
+				Nouveaux opérateurs
+				|| or <br />
+				&& et <br />
+				?? défini
+
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+			//<![CDATA
+			//L’opérateur OU logique va tenter de transformer la première expression en true
+			//Si elle peut être convertie, alors cette valeur est renvoyée.
+			//Sinon c’est l’autre valeur qui est renvoyée.
+			name = "superAgent";
+			console.info(name || "Agent"); // "superAgent"
+			name = false;
+			console.info(name || "Agent"); // "Agent"
+			name = undefined;
+			console.info(name || "Agent"); // "Agent"
+			name = null;
+			console.info(name || "Agent"); // "Agent"
+			//L’opérateur ET logique va tenter de transformer la première expression
+			//en false.Si elle peut être convertie, alors cette valeur est
+			//renvoyée. Sinon c’est l’autre valeur qui est renvoyée
+			name = "superAgent";
+			console.info(name && "Agent"); // "Agent"
+			name = false;
+			console.info(name && "Agent"); // false
+			name = undefined;
+			console.info(name && "Agent"); // undefined
+			name = null;
+			console.info(name && "Agent"); // null
+			//va vérifier si le premier opérande est strictement vide
+			//(null ou undefined). Si oui, c’est l’autre valeur qui est renvoyée. Sinon, la première valeur est renvoyée
+			name = "superAgent";
+			console.info(name ?? "Agent"); // "superAgent"
+			name = false;
+			console.info(name ?? "Agent"); // false
+			name = undefined;
+			console.info(name ?? "Agent"); // "Agent"
+			name = null;
+			console.info(name ?? "Agent"); // "Agent"
+			//matchAll renvoie des infos sur la ligne
+			let texte = 'Héros DC Commics: superMan Batman WonderWoman GreenHornet';
+			let regex = /Man/gi;
+			for (const match of texte.matchAll(regex)) {
+			  console.log(`Found "${match[0]}" at index ${match.index}.`)
+			}
+
+			// ]]>
+		</script>
+	</body>
+</html>
