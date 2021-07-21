@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<link rel="stylesheet"  href="style.css" />
+		<link rel="stylesheet"  href="use-date.css" />
+		<link rel="stylesheet"  href="use-date.css" />
+		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 04</span> State </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Hooks</h3>
+				Les Hooks sont une nouveauté de React 16.8. <br />
+				Ils permettent de bénéficier d’un état local et d’autres fonctionnalités de React sans avoir à écrire de classes<br />
+			  useState : permet de déclarer une variable d’état.<br />
+				useEffect : Accepte une fonction qui contient du code impératif, pouvant éventuellement produire des effets.<br />
+				useContext() : permet de lire des données issues du Contexte.<br />
+				Dans un composant donné, ce sont toujours les même hooks qui doivent etre appelés<br />
+				dans le même ordre.
+				 <article id="job"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+		<script src='https://momentjs.com/downloads/moment.min.js'></script>
+    <script type="text/babel">
+    //<![CDATA[
+		// le hook useState
+		class Calendar extends React.Component {
+  	constructor(props) {
+	    super(props);
+	    this.state = {
+      month: moment(),
+      selected: moment().startOf('day')
+    };
+
+    this.previous = this.previous.bind(this);
+    this.next = this.next.bind(this);
+  }
+
+  previous() {
+    const {
+      month,
+    } = this.state;
+
+    this.setState({
+      month: month.subtract(1, 'month'),
+    });
+  }
+
+  next() {
+    const {
+      month,
+    } = this.state;
+
+    this.setState({
+      month: month.add(1,'month'),
+    });
+  }
+
+  select(day) {
+    this.setState({
+      selected: day.date,
+      month: day.date.clone(),
+    });
+  }
+
+  renderWeeks() {
+    let weeks = [];
+    let done = false;
+    let date = this.state.month.clone().startOf("month").add("w" -1).day("Sunday");
+    let count = 0;
+    let monthIndex = date.month();
+
+    const {
+      selected,
+      month,
+    } = this.state;
+
+    while (!done) {
+      weeks.push(
+        <Week key={date}
+          date={date.clone()}
+          month={month}
+          select={(day)=>this.select(day)}
+          selected={selected} />
+      );
+
+      date.add(1, "w");
+
+      done = count++ > 2 && monthIndex !== date.month();
+      monthIndex = date.month();
+    }
+    return weeks;
+  };
+
+  renderMonthLabel() {
+    const {
+      month,
+    } = this.state;
+
+    return <span className="month-label">{month.format("MMMM YYYY")}</span>;
+  }
+
+  render() {
+    return (
+      <section className="calendar">
+        <header className="header">
+          <div className="month-display row">
+            <i className="arrow fa fa-angle-left" onClick={this.previous}/>
+            {this.renderMonthLabel()}
+            <i className="arrow fa fa-angle-right" onClick={this.next}/>
+          </div>
+          <DayNames />
+        </header>
+        {this.renderWeeks()}
+      </section>
+    );
+  }
+}
+
+class DayNames extends React.Component {
+    render() {
+        return (
+          <div className="row day-names">
+            <span className="day">Dim</span>
+            <span className="day">Lun</span>
+            <span className="day">Mar</span>
+            <span className="day">Mer</span>
+            <span className="day">Jeu</span>
+            <span className="day">Ven</span>
+            <span className="day">Sam</span>
+          </div>
+        );
+    }
+}
+
+class Week extends React.Component {
+  render() {
+    let days = [];
+    let {
+      date,
+    } = this.props;
+
+    const {
+      month,
+      selected,
+      select,
+    } = this.props;
+
+    for (var i = 0; i < 7; i++) {
+      let day = {
+          name: date.format("dd").substring(0, 1),
+          number: date.date(),
+          isCurrentMonth: date.month() === month.month(),
+          isToday: date.isSame(new Date(), "day"),
+          date: date
+      };
+      days.push(
+        <Day day={day}
+          selected={selected}
+          select={select}/>
+      );
+
+      date = date.clone();
+      date.add(1, "day");
+    }
+
+    return (
+      <div className="row week" key={days[0]}>
+        {days}
+      </div>
+    );
+  }
+
+}
+
+class Day extends React.Component {
+  render() {
+    const {
+      day,
+      day: {
+        date,
+        isCurrentMonth,
+        isToday,
+        number
+      },
+      select,
+      selected
+    } = this.props;
+
+    return (
+      <span
+        key={date.toString()}
+        className={"day" + (isToday ? " today" : "") + (isCurrentMonth ? "" : " different-month") + (date.isSame(selected) ? " selected" : "")}
+        onClick={()=>{select(day); console.info(date)}}>{number}</span>
+    );
+  }
+}
+
+ReactDOM.render(<Calendar/>, document.querySelector("#job"));
+
+  //  ]]>
+    </script>
+	</body>
+</html>

@@ -1,0 +1,14 @@
+.toto{
+	color : purple;
+}
+#titi{
+	background-color : ivory;
+}
+
+li.item:nth-child(even){ /* fonction css, colorie une ligne sur 2*/
+	color : crimson;
+}
+
+p.toto[data-test='100']{
+	border: orange solid .5em;
+}

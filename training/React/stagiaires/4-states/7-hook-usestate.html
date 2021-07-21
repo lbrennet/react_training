@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<link rel="stylesheet"  href="style.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 04</span> State </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Hooks</h3>
+				Les Hooks sont une nouveauté de React 16.8. <br />
+				Ils permettent de bénéficier d’un état local et d’autres fonctionnalités de React sans avoir à écrire de classes<br />
+			  useState : permet de déclarer une variable d’état.<br />
+				useEffect : Accepte une fonction qui contient du code impératif, pouvant éventuellement produire des effets.<br />
+				useContext() : permet de lire des données issues du Contexte.<br />
+				Dans un composant donné, ce sont toujours les même hooks qui doivent etre appelés<br />
+				dans le même ordre.
+				 <article id="job"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+    <script type="text/babel">
+    //<![CDATA[
+		// le hook useState
+		function Counter() {
+			const initialState = {
+				counter: 0,
+				error: ""
+			}
+			//initialise toutes mes const
+			//React peut regrouper plusieurs appels setState () en une seule mise à jour
+			  const [state, setState] = React.useState(initialState);
+				const increment = () => {
+
+							setState(prev => ({
+								counter: state.counter+1,
+								error: ''
+								// met à jour les deux valeurs
+							}))
+					  }
+			  const decrement= () => {
+			    if (state.counter == 0) {
+							setState(prev => ({
+							...prev,
+							error: "ne peut etre négatif !"
+							//ne met a jour que erreur
+							}))
+			      return
+			    }
+			    setState(prev => ({
+						...prev,
+						counter: state.counter-1
+						//ne met a jour que counter
+					}))
+			  }
+			  return (
+			    <div className="app">
+			      <h1>🏆 useState -  Demo </h1>
+			      <h1 className="count">{state.counter}</h1>
+			      <div className="item-wrapper">
+			        <h4>Encheres</h4>
+			      </div>
+			      <div className="buttons">
+			        <button onClick={increment}>+</button>
+			        <button onClick={decrement}>-</button>
+			      </div>
+			      { state.error.length > 0 && <div>
+			          {state.error}
+			        </div>
+			      }
+			    </div>
+			  );
+			}
+			const rootElement = document.querySelector("#job");
+			ReactDOM.render(<Counter />, rootElement);
+
+  //  ]]>
+    </script>
+	</body>
+</html>

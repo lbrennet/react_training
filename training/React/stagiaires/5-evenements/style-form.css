@@ -1,0 +1,109 @@
+@import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+form {
+  width: 90%;
+  max-width: 600px;
+  padding: 50px;
+  margin: 20px auto;
+  background: white;
+  box-shadow: 0 5px 15px -6px rgba(0, 0, 0, 0.25);
+}
+
+.form-group {
+  position: relative;
+}
+.form-group.active label {
+  font-size: 12px;
+  line-height: 20px;
+  color: #999;
+}
+.form-group i {
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  line-height: 33px;
+  z-index: 5;
+  width: 35px;
+  border: 3px solid #444;
+  text-align: center;
+  border-radius: 50%;
+}
+
+i {
+  transition: all .4s ease-out;
+}
+
+input:not([type="submit"]), textarea {
+  position: relative;
+  padding: 40px 30px 30px 60px !important;
+  font-size: 24px;
+  line-height: 64px;
+  outline: none !important;
+  background: none !important;
+  border-radius: 0 !important;
+  border: none;
+  box-shadow: none !important;
+  border-bottom: 1px solid #d9d9d9;
+}
+input:not([type="submit"]).invalid + i, textarea.invalid + i {
+  color: #9b59b6 !important;
+  border-color: #9b59b6 !important;
+  transform: rotateY(360deg);
+}
+input:not([type="submit"]).invalid + i:after, textarea.invalid + i:after {
+  display: block !important;
+  position: absolute;
+  width: 100%;
+  content: "";
+  height: 3px;
+  background: #9b59b6;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) rotate(-45deg);
+}
+input:not([type="submit"]).valid + i, textarea.valid + i {
+  color: #2ecc71 !important;
+  border-color: #2ecc71 !important;
+  transform: rotateY(0deg);
+}
+
+input[type="submit"] {
+  display: block;
+  border: none;
+  padding: 20px 30px;
+  margin: 0 auto;
+  font-weight: bold;
+  transition: all .3s ease-out;
+  outline: none;
+}
+input[type="submit"]:hover {
+  background: #282828;
+  color: white;
+}
+
+label {
+  display: block;
+  position: absolute;
+  top: 5px;
+  left: 60px;
+  line-height: 70px;
+  font-size: 20px;
+  z-index: 5;
+  transition: all .3s ease-out;
+}
+label .valid-message {
+  display: none;
+}
+
+ul li.formlistitem{
+  list-style: upper-roman;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

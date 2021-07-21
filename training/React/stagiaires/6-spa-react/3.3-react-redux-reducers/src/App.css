@@ -1,0 +1,25 @@
+div ul li{
+  list-style: none;
+}
+div ul li:nth-child(odd) a{
+  color : crimson;
+  text-decoration:none;
+}
+
+div ul li:nth-child(even) a{
+  color : rebeccapurple;
+  text-decoration:none;
+}
+div div div h2{
+  color : crimson;
+  margin-left: .8em;
+}
+div div div p{
+  color : rebeccapurple;
+  width: 50%;
+  margin-left: .8em;
+}
+div div a{
+  color : crimson;
+  text-decoration:none;
+}

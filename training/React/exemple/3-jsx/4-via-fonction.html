@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<link rel="stylesheet"  href="style.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 03</span> JSX </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> JSX</h3>
+				On peut ajouter un bloc javascript<br />
+				Exemple un tableau de données les instruction JS <br />
+				doivent être entourées de<br />
+				Tout ce qui se trouve dans la balise JSX &lt;CadreBorder&gt; est passé comme <br />
+				prop children au composant CadreBorder.<br />
+				Puisque CadreBorder utilise {props.children} dans une balise &lt;div&gt;,<br />
+				les éléments passés apparaissent dans la sortie finale.<br />
+					<article class="app0"></article>
+					<article class="app"></article>
+					<article class="app2"></article>
+
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script src="../00-modele/js/react.development.js"></script>
+		<script src="../00-modele/js/react-dom.development.js"></script>
+		<script src="../00-modele/js/babel.js"></script>
+		<script type="text/babel">
+		//<![CDATA[
+		function CadreBorder(props) {
+			return (
+			<div className={`FancyBorder FancyBorder-${props.color}`}>
+				{props.children}
+			</div>
+				);
+			}
+
+		function WelcomeDialog() {
+			return (
+			<CadreBorder color="teal">
+				<h1 className="Dialog-title">
+					Welcome
+				</h1>
+				<p className="Dialog-message">
+					Bienvenu chez React !
+				</p>
+				<p className="Dialog-message">
+					Bienvenu chez React le retour
+				</p>
+			</CadreBorder>
+				);
+			}
+			ReactDOM.render(<WelcomeDialog />, document.querySelector(".app0"));
+
+        const planets = [	"Alderaan","Corellia","Coruscant","Dagobah","Hoth","Tatooine"];
+        var ItemElements = ()=>{
+					// un peut aussi utiliser une fonction pour creer l'élément
+          return planets.map((elem, index)=>{
+            return <li key={index}>{elem}</li>;
+          })
+        }
+        ReactDOM.render(<ol><ItemElements /></ol>, document.querySelector(".app"));
+				// autre fonction qui va recharger le DOM à chaque fois
+				function tick() {
+				  const Element = (
+				    <div>
+				      <h3>time !</h3>
+				      <h4>Il est <time style={{color:"crimson"}}>{new Date().toLocaleTimeString()}.</time></h4>
+				    </div>
+				  );
+				  ReactDOM.render(Element , document.querySelector(".app2"));
+					//En pratique, la plupart des applications React n’appellent
+					//ReactDOM.render() qu’une seule foi !
+				}
+				setInterval(tick, 1000);
+    //  ]]>
+		</script>
+	</body>
+</html>

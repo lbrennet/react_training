@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+
+		<link rel="stylesheet"  href="style.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 03</span> JSX </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> JSX</h3>
+				Dans le but d'alléger l'écriture du HTML au format javascript,<br />
+				React propose l'utilisation de la librairie JSX.<br />
+				Elle permet une écriture d'éléments React plus simple à lire et à écrire
+					<article class="app"></article>
+					<article class="app2"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script src="../00-modele/js/react.development.js"></script>
+		<script src="../00-modele/js/react-dom.development.js"></script>
+		<script src="../00-modele/js/babel.js"></script>
+		<script type="text/babel">
+		//<![CDATA[
+// à vous
+let liste = <ul id="list1" className="listeitem">
+                      <li>
+                        <a href="http://www.perdu.com" rel="noopener" target="_blank">Perdu</a>
+                      </li>
+                      <li className="icon-paper-plane">Alderaan</li>
+                      <li>Corellia </li>
+                      <li>Coruscant </li>
+                      <li>Dagobah</li>
+											<li>L{"'"}Hoth</li>
+											<li>L&apos;Hoth 2</li>
+											<li>Tatooine</li>
+                    </ul>;  // code JSX
+        console.info(liste);
+        ReactDOM.render(liste, document.querySelector(".app"));
+
+        var liste2 = <ul id="list2" style={{listStyle:"none", color:"crimson"}} >
+                      <li>
+                        <a href="http://www.perdu.com" target="_blank">Perdu</a>
+                      </li>
+                      <li>Kamino</li>
+                      <li>Naboo{/*Commentaire*/}</li>
+                      <li>Polis Massa</li>
+                      <li>Stewjon</li>
+                    </ul>;  // code JSX
+        ReactDOM.render(liste2, document.querySelector(".app2"));
+// à vous
+    //  ]]>
+		</script>
+	</body>
+</html>

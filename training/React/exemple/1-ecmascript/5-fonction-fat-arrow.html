@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3>Les fonctions</h3>
+				L'utilisation d'une fonction asynchrone modifie
+				le comportement de notre fonction.<br />
+				La Function.prototype.bind().peut etre remplacer par
+				les fonctions fléchées offrent une syntaxe raccourcie
+				des fonctions en utilisant la syntaxe =>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+			//<![CDATA
+			/* fonction anonymes classique
+			let multiple = function (value) {
+			  return value * 10
+			}*/
+
+			/* fat arrow function */
+			let multiple = value => value * 10
+
+			console.info(multiple(200))
+
+			var obj={
+			  noms :["M", "Q", "Bond"],
+			  log : function(){
+			    setTimeout(() =>{
+			      console.info(this.noms);
+			    }, 1000 );
+			  }
+			}
+			obj.log();
+			// let closure = function (a) {
+			//   return function (b) {
+			//     let c = a * b
+			//     let d = c % 5
+			//     if (d === 0) {
+			//       return true
+			//     }
+			//     return false
+			//   }
+			// }
+			 //equivaux à
+			 let closure = a => b => (a * b) % 5 === 0
+			// ]]>
+		</script>
+	</body>
+</html>

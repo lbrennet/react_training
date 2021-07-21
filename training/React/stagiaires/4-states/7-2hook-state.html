@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<link rel="stylesheet"  href="style.css" />
+		<link rel="stylesheet"  href="use-date.css" />
+		<link rel="stylesheet"  href="use-date.css" />
+		<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css'>
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 04</span> State </h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Hooks</h3>
+				Les Hooks sont une nouveauté de React 16.8. <br />
+				Ils permettent de bénéficier d’un état local et d’autres fonctionnalités de React sans avoir à écrire de classes<br />
+			  useState : permet de déclarer une variable d’état.<br />
+				useEffect : Accepte une fonction qui contient du code impératif, pouvant éventuellement produire des effets.<br />
+				useContext() : permet de lire des données issues du Contexte.<br />
+				Dans un composant donné, ce sont toujours les même hooks qui doivent etre appelés<br />
+				dans le même ordre.
+				 <article id="job"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+		<script src='https://momentjs.com/downloads/moment.min.js'></script>
+    <script type="text/babel">
+    //<![CDATA[
+		// le hook useState
+		const ToDo = props => (
+		  <tr>
+		    <td>
+		      <label>{props.id}</label>
+		    </td>
+		    <td>
+		      <input />
+		    </td>
+		    <td>
+		      <label>{props.createdAt.toTimeString()}</label>
+		    </td>
+		  </tr>
+		);
+
+		class ToDoList extends React.Component {
+		  constructor() {
+		    super();
+		    //à vous
+				// à vous
+		  }
+
+		  sortByEarliest() {
+		    //à vous
+				//à vous
+				//à vous
+		    this.setState({
+		     //à vous
+		    });
+		  }
+
+		  sortByLatest() {
+		    const sortedList = this.state.list.sort((a, b) => {
+		      return b.createdAt - a.createdAt;
+		    });
+		    this.setState({
+		      list: [...sortedList],
+		    });
+		  }
+
+		  addToEnd() {
+		    const date = new Date();
+		    const nextId = this.state.toDoCounter + 1;
+		    const newList = [
+		     //à vous
+				 //à vous
+		    ];
+		    this.setState({
+		      list: newList,
+		      toDoCounter: nextId,
+		    });
+		  }
+
+		  addToStart() {
+		    const date = new Date();
+		    const nextId = this.state.toDoCounter + 1;
+		    const newList = [
+		     //à vous
+				 //à vous
+		    ];
+		    this.setState({
+		      list: newList,
+		      toDoCounter: nextId,
+		    });
+		  }
+
+		  render() {
+		    return (
+		      <div>
+		        <code>key={this.state.toDoCounter} calculé</code>
+		        <br />
+		        <button onClick={this.addToStart.bind(this)}>
+		          Ajout
+		        </button>
+		        <button onClick={this.addToEnd.bind(this)}>
+		          Ajout en fin
+		        </button>
+		        <button onClick={this.sortByEarliest.bind(this)}>
+		          Tri Nx
+		        </button>
+		        <button onClick={this.sortByLatest.bind(this)}>
+		          Tri der
+		        </button>
+		        <table>
+		          <tr>
+		            <th>ID</th>
+		            <th />
+		            <th>created at</th>
+		          </tr>
+		          {//à vous
+							//à vous
+						//à vous
+					}
+		        </table>
+		      </div>
+		    );
+		  }
+		}
+
+ReactDOM.render(<ToDoList />, document.querySelector("#job"));
+
+  //  ]]>
+    </script>
+	</body>
+</html>

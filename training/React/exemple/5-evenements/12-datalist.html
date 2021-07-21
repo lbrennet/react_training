@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 05</span> Evenement</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Evenement</h3>
+			Formulaire <br />
+					React et les fomulaires bouton radion<br />
+					recuperer la valeur selectionnée via le btn validé<br /><br />
+
+					<article class="formulaire"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+    <script type="text/babel">
+		//<![CDATA[
+		// class Star extends React.Component {
+		//   constructor(){
+		//     super();
+		//     this.state = {items: []}
+		//   }
+		//   componentWillMount(){
+		//     fetch( 'https://swapi.co/api/people/?format=json')
+		//       .then( response => response.json() )
+		//       .then( ({results: items}) => this.setState({items}))
+		//   }
+		//
+		//   render(){
+		//     let items = this.state.items;
+		//     return (
+		//       <div>
+		//         <input type="text" list="sw" />
+		// 				<datalist id="sw">
+		//         {items.map(item =>
+		//           <Person key={item.name} person={item} />)}
+		// 				</datalist>
+		//       </div>
+		//     )
+		//   }
+		// }
+		// const Person = (props) => <option value={props.person.name} />
+		// ReactDOM.render(<Star />, document.querySelector(".formulaire"));
+		//avec Hook
+		const Star = () => {
+			const [items, setItems] = React.useState([]);
+			//useEffect : Accepte une fonction qui contient du code impératif, pouvant éventuellement produire des effets.
+			React.useEffect(() => {
+				fetch("https://swapi.dev/api/people/?format=json")
+					.then(response => response.json())
+					.then(json => setItems(json.results));
+			}, []);// pour ne pas faire des appels fetch en boucle
+			return (
+				<div>
+					<input type="text" list="sw" />
+					<datalist id="sw">
+						{items.map(item => (
+							<Person key={item.name} person={item} />
+						))}
+					</datalist>
+				</div>
+			);
+		};
+		const Person = props => <option value={props.person.name} />;
+		ReactDOM.render(<Star />, document.querySelector(".formulaire"));
+    //  ]]>
+    </script>
+	</body>
+</html>

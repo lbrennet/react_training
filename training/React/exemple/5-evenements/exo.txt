@@ -1,0 +1,64 @@
+	function Result(props) {
+	  return <h1>Avec fonction : <br/> {props.number} {props.text} </h1>
+
+			;
+	}
+
+		const NameForm = () => {
+			const [valueText,   setValueText] = React.useState("");
+			const [valueNumber, setValueNumber] = React.useState("");
+			const [valueEmail,  setValueEmail] = React.useState("");
+			const [showHide,  setShowHide] = React.useState(false);
+			const handleChange = event => {
+				if(event.target.id === 'idText'){
+						setValueText(event.target.value);
+				}
+				if(event.target.id === 'idNumber'){
+						setValueNumber(event.target.value);
+				}
+				if(event.target.id === 'idEmail'){
+						setValueEmail(event.target.value);
+				}
+
+			};
+			const handleSubmit = event => {
+				//debugger;
+				setShowHide(!showHide);
+				//alert("Value : " +  " number " + valueNumber + " email " + valueEmail);
+				event.preventDefault();
+			};
+			return (
+				<form onSubmit={handleSubmit}>
+					<label>
+						Name :
+						<input id="idText"    type="text" value={valueText} onChange={handleChange} />
+					</label><br/>
+					<label>
+						Number :
+						<input id="idNumber"  type="number" value={valueNumber} onChange={handleChange} />
+					</label><br/>
+					<label>
+						Email :
+						<input id="idEmail"  type="email" value={valueEmail} onChange={handleChange} />
+					</label><br/>
+
+
+					<input type="submit" value="Submit" />
+
+					<hr/>
+ 					{showHide ?
+						  'text:' + valueText
+						+ '<br/>Number ' + valueNumber
+						+ '<br/>Email ' + valueEmail
+						:''}
+
+						{showHide ?
+							<Result text={valueText} number={valueNumber}/>
+							:''}
+
+
+
+				</form>
+			);
+		};
+		ReactDOM.render(<NameForm />, document.querySelector(".formulaire"));

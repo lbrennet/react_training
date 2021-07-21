@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<style rel="stylesheet">
+		.blinking-cursor {
+			pointer-events: none;
+			user-select: none;
+			animation: blink 1s steps(2, start) infinite;
+			}
+				@keyframes blink {
+				to {
+					visibility: hidden;
+				}
+			}
+		</style>
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3>Promise</h3>
+					L'expression await interrompt l'exécution d'une fonction asynchrone et
+					attend la résolution d'une promesse.
+					Lorsque la promesse est résolue (tenue ou rompue),
+					la valeur est renvoyée et l'exécution de la fonction asynchrone
+
+					<span id="type-text">...</span>
+					<span class="blinking-cursor">_</span>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+			//<![CDATA
+			const elementNode = document.querySelector('#type-text')
+			let text = ''
+
+			function updateNode () {
+			  elementNode.innerText = text
+			}
+
+			function pushCharacter (character) {
+			  text += character
+			  updateNode()
+			}
+
+			function popCharacter () {
+			  text = text.slice(0, text.length -1)
+			  updateNode()
+			}
+
+			function clearText () {
+			  text = ''
+			  updateNode()
+			}
+
+
+			function wait (time) {
+			  return new Promise(resolve => {
+			    setTimeout(resolve, time)
+			  })
+			}
+
+			function typeCharacter (character) {
+			  return new Promise(resolve => {
+			    const randomMsInterval = 100 * Math.random()
+			    const msInterval = randomMsInterval < 50 ? 10 : randomMsInterval
+
+			    pushCharacter(character)
+			    wait(msInterval).then(resolve)
+			  })
+			}
+
+			function removeCharacter () {
+			  return new Promise(resolve => {
+			    const randomMsInterval = 100 * Math.random()
+			    const msInterval = randomMsInterval < 50 ? 10 : randomMsInterval
+
+			    popCharacter()
+			    wait(msInterval).then(resolve)
+			  })
+			}
+
+			function typeText (text) {
+			  return new Promise(resolve => {
+			    function _type (index) {
+			      typeCharacter(text[index]).then(() => {
+			        if (index + 1 < text.length) _type(index + 1)
+			        else resolve()
+			      })
+			    }
+			    _type(0)
+			  })
+			}
+
+			function removeText (amount) {
+			  return new Promise(resolve => {
+			    function _remove (index) {
+			      removeCharacter().then(() => {
+			        if (index + 1 < amount) _remove(index + 1)
+			        else resolve()
+			      })
+			    }
+			    _remove(0)
+			  })
+			}
+
+
+		// Typing script ⌨
+
+		function typeLoop() {
+		  typeText(' React !')
+		    .then(() => wait(2000))
+		    .then(() => removeText(8))
+		    .then(() => typeText(' World !'))
+		    .then(() => wait(2000))
+		    .then(() => removeText(6))
+		    .then(typeLoop)
+		}
+
+		wait(1000).then(() => {
+		  clearText()
+		  typeText('Hello, ').then(typeLoop)
+		})
+			// ]]>
+		</script>
+	</body>
+</html>

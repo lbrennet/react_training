@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 01</span> ES15</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3>Les boucles</h3>
+				Il n'existe toujours pas de mot clé foreach en
+				JavaScript 2015, cependant il y a désormais une
+				nouvelle façon d'itérer sur un tableau en utilisant le couple for-of.
+
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script>
+			//<![CDATA
+			// create a function to use
+      const patronyme = item => `${item} Dalton`
+
+      // we have an array
+      const bandits = ['Jack', 'Avrell', 'Jo', 'Ma\'']
+
+      // call the function
+      const familleArray = bandits.map(patronyme)
+      console.info(familleArray)
+
+      //flat Array
+      const arr1 = [0, 1, 2, [3, 4]];
+
+      console.log(arr1.flat());
+      // expected output: [0, 1, 2, 3, 4]
+
+      const arr2 = [0, 1, 2, [[[3, 4]]]];
+
+      console.log(arr2.flat(2));
+      // expected output: [0, 1, 2, [3, 4]]
+
+				var data = [
+				 { name: 'abc', value: 21 },
+				 { name: 'cde', value: 37 },
+				 { name: 'ee', value: 45 },
+				 { name: 'ff', value: -12 },
+				 { name: 'ab', value: 13 },
+				 { name: 'cs', value: 37 }
+			 ];// sort by value
+			 let tri=data.sort(function (a, b) {
+				 return a.value - b.value;
+			 })
+			 console.info(tri)
+
+			 //es8
+					 var data = { nom: "skywalker", prenom: "Rey" }
+
+					 for (const [key, value] of Object.entries(data)) {
+							 console.info(key, value);
+					 }
+			 // generateur ui
+			 function generateUID(length)
+				 {
+					 //btoa crée une chaîne ASCII codée en base 64 à partir d'un objet String
+					 return window.btoa(Array.from(window.crypto.getRandomValues(new Uint8Array(length * 2))).map((b) => String.fromCharCode(b)).join("")).replace(/[+/]/g, "").substring(0, length);
+				 }
+				 console.info(generateUID(22))
+			// ]]>
+		</script>
+	</body>
+</html>

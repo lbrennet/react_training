@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: white;
+  padding-left: 15px;
+  margin-top: 75px;
+}
+
+button {
+  margin-left: 15px;
+  position: relative;
+  z-index: 100000;
+}
+
+#page {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fb4b4e;
+  margin: 0;
+  overflow: hidden;
+}

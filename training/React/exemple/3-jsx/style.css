@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css?family=Zhi+Mang+Xing&display=swap');
+
+.listeitem{
+	color : purple;
+}
+#titi{
+	background-color : ivory;
+}
+
+li.item:nth-child(2n){
+	color : crimson;
+}
+.Comment{
+	background-color: orange;
+
+}
+.UserInfo-name{
+	text-transform: capitalize;
+}
+.Comment-date{
+	text-transform: full-width;
+}
+.frag{
+	width : 12.5em;
+	height: 12.5em;
+	margin: .5em;
+	background-size:cover;
+	float: left;
+
+}
+.frag:nth-child(1){
+	background-image: url("../00-modele/img/image1.jpg");
+}
+.frag:nth-child(2){
+	background-image:  url("../00-modele/img/image2.jpg");
+}
+.frag:nth-child(3){
+	background-image:  url("../00-modele/img/image3.jpg");
+}
+.frag:hover{
+	filter: blur(5px);
+}
+.leaflet-container {
+  height: 800px;
+  width: 100%;
+}
+.FancyBorder {
+  padding: 10px 10px;
+  border: 10px solid;
+}
+
+.FancyBorder-teal {
+  border-color: teal;
+}
+*[class^="Dialog-"]{
+	font-family: 'Zhi Mang Xing', cursive;
+	color:maroon;
+}
+#sw{
+	display: flex;
+	align-items: stretch;
+}
+.person {
+  display: inline-block;
+	top:0;
+  margin: 10px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+	padding: .8em;
+}
+.person h1 {
+	color: teal;
+	font-family: 'Zhi Mang Xing', cursive;
+}
+.person p::first-letter {
+	color : crimson;
+	font-size: 130%;
+}
+.min{
+	margin: 0;
+	color: teal;
+}
+.james{
+	font-family: 'skyfall_doneregular';
+	font-size: 150%;
+}
+.FancyChecked{
+	color :orange;
+}
+.FancyUnchecked{
+	color :orange;
+	background-color: black;
+}

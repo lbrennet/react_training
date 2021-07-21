@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>React.JS</title>
+		<meta name="description" content="React.JS." />
+		<meta name="keywords" content="menu, navigation, hover, effect, animation, javascript, css, web design" />
+		<meta name="author" content="sbrunet" />
+		<link rel="icon" type="image/png" href="../00-modele/chapoulougne.png" />
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,700|Quicksand:500" rel="stylesheet">
+		<link rel="stylesheet"  href="../00-modele/css/normalize.css" />
+		<link rel="stylesheet"  href="../00-modele/css/demo.css" />
+		<link rel="stylesheet"  href="../00-modele/css/style-menu.css" />
+		<link rel="stylesheet"  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+
+	</head>
+	<body class="demo-ama"  onload="menu()">
+
+		<main>
+			<div class="content content--fixed">
+				<header class="codrops-header">
+
+					<h1 class="codrops-header__title">React.JS </h1>
+					<h2 class="title"> <span>Chap 05</span> Evenement</h2>
+				</header>
+			</div>
+			<section class="content">
+				<nav class="menu menu--ama">
+					<!-- insertion du menu -->
+				</nav>
+				<article>
+				<h3> Stocker en offline</h3>
+					A l'aide de local storage <br />
+					HTML5<br />
+					<article class="ajax"></article>
+				</article>
+			</section>
+		</main>
+		<script src="menu.js"></script>
+		<script src="../00-modele/js/charming.min.js"></script>
+		<script src="../00-modele/js/anime.min.js"></script>
+		<script src="../00-modele/js/demo.js"></script>
+		<script src="../00-modele/js/demo-ama.js"></script>
+		<script  src="../00-modele/js/react.development.js"></script>
+    <script  src="../00-modele/js/react-dom.development.js"></script>
+    <script  src="../00-modele/js/babel.js"></script>
+		<script  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+		<!-- Pour gerer le temp saisie - affichage -->
+    <script type="text/babel">
+		//<![CDATA[
+		const {useState, useEffect, useRef} = React;
+		function useJournal() {
+		  const [entries, setEntries] = useState([]);
+		  const getEntriesFromStorage = () => JSON.parse(
+		    window.localStorage.getItem('journalEntries')
+		  );
+		  const setEntriesToStorage = items =>
+		  window.localStorage.setItem('journalEntries', JSON.stringify(items));
+		  useEffect(() => {
+		    const entriesFromStorage = getEntriesFromStorage();
+		    if(entriesFromStorage) {
+		      setEntries(entriesFromStorage);
+		    }
+		  }, []);
+		  const storeEntry = (entry) => {
+		    const newEntries = [entry, ...entries];
+		    setEntries(newEntries);
+		    setEntriesToStorage(newEntries);
+		  }
+
+		  const removeEntry = (index) => {
+		    const newEntries = [...entries.slice(0, index), ...entries.slice(index+1)];
+		    setEntries(newEntries);
+		    setEntriesToStorage(newEntries);
+		  }
+
+		  return [entries, storeEntry, removeEntry];
+		}
+
+		function EntryList({list, deleteEntry}) {
+		  const handleDeleteClick = (index) => e => {
+		    deleteEntry(index);
+		  }
+		  return (
+		    <div className="entry-list mt-3">
+		      {
+		        list && list.map((item, i) => {
+		          const itemDate = moment(item.date).fromNow();
+		          const flagColor = item.flag ? `bg-${item.flag} text-white` : '';
+		          return (
+		            <div className={`card mb-2 ${flagColor}`}>
+		              <div className="card-body">
+		                <h4 className="card-title">{itemDate}</h4>
+		                <p className="card-text">{item.message}</p>
+		                <button className="btn btn-sm btn-danger"
+		                  onClick={handleDeleteClick(i)}>Supp</button>
+		              </div>
+		            </div>
+		          )
+		        })
+		      }
+		    </div>
+		  )
+		}
+
+		function Entry({addEntry}) {
+		  const [message, setMessage] = useState('');
+		  const [flag, setFlag] = useState('');
+		  const fieldRef = useRef();
+		  const handleOnChange = e => setMessage(e.target.value);
+		  const handleFlagChange = e => setFlag(e.target.value);
+		  const handleOnSubmit = e => {
+		    e.preventDefault();
+		    if(message && message.trim().length > 0) {
+		      addEntry({
+		        message,
+		        flag,
+		        date: Date.now()
+		      });
+		      setMessage('');
+		      setFlag('');
+		    }
+		  }
+
+		  useEffect(() => {
+		    fieldRef.current.focus();
+		  }, []);
+
+		  return (
+		    <form onSubmit={handleOnSubmit}>
+		      <div className="form-group">
+		      <label htmlFor="message">Message à stocker</label>
+		      <textarea
+		        className="form-control"
+		        value={message}
+		        onChange={handleOnChange}
+		        type="text"
+		        id="message"
+		        maxLength={100}
+		        ref={fieldRef}
+		        />
+		      </div>
+		      <div className="form-check form-check-inline mb-3">
+		        <input className="form-check-input"
+		          id="flagDanger" type="radio" name="flag"
+		          value="danger" defaultChecked={flag === 'danger'}
+		          onChange={handleFlagChange}/>
+		        <label className="form-check-label bg-danger text-white mr-2 pl-2 pr-2"
+		          htmlFor="flagDanger">Critique</label>
+		        <input className="form-check-input"
+		          id="flagGreen" type="radio" name="flag"
+		          value="success" defaultChecked={flag === 'success'}
+		          onChange={handleFlagChange}/>
+		        <label className="form-check-label bg-success text-white mr-2 pl-2 pr-2"
+		          htmlFor="flagGreen">Normal</label>
+		        <input className="form-check-input"
+		          id="flagInfo" type="radio" name="flag"
+		          value="dark" defaultChecked={flag === 'dark'}
+		          onChange={handleFlagChange}/>
+		        <label className="form-check-label bg-dark text-white pl-2 pr-2"
+		          htmlFor="flagInfo">Info</label>
+		      </div>
+		      <button disabled={message.trim().length === 0 || !flag}
+		        className="btn btn-success form-control"
+		        type="submit">Go</button>
+		    </form>
+		  );
+		}
+
+		function App() {
+		  const [entries, storeEntry, removeEntry] = useJournal();
+		  const handleAddEntry = (entry) => storeEntry(entry);
+		  const handleDeleteEntry = (index) => removeEntry(index);
+		  return (
+		    <div className="container">
+		      <h1 className="text-center">
+		        Liste
+		      </h1>
+		      <Entry addEntry={handleAddEntry}/>
+		      <EntryList list={entries} deleteEntry={handleDeleteEntry}/>
+		    </div>
+		  )
+		}
+			ReactDOM.render(<App />, document.querySelector(".ajax"));
+    //  ]]>
+    </script>
+	</body>
+</html>
